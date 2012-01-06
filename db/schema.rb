@@ -10,7 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120106204734) do
+ActiveRecord::Schema.define(:version => 20120106220729) do
+
+  create_table "games", :force => true do |t|
+    t.integer  "player_left_id"
+    t.integer  "player_right_id"
+    t.integer  "winner_id"
+    t.string   "score"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "games", ["player_left_id"], :name => "index_games_on_player_left_id"
+  add_index "games", ["player_right_id"], :name => "index_games_on_player_right_id"
+  add_index "games", ["winner_id"], :name => "index_games_on_winner_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
