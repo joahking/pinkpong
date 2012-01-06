@@ -94,6 +94,8 @@ GEM
       railties (~> 3.1.0)
       sass (~> 3.1.10)
       tilt (~> 1.3.2)
+    shoulda (2.11.3)
+    shoulda-matchers (1.0.0.beta3)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -121,4 +123,6 @@ DEPENDENCIES
   mysql2
   rails (= 3.1.3)
   sass-rails (~> 3.1.5)
+  shoulda
+  shoulda-matchers
   uglifier (>= 1.0.3)
