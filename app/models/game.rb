@@ -1,3 +1,11 @@
+class WinnerValidator < ActiveModel::Validator
+  def validate(record)
+    if [record.player_left, record.player_right].exclude?(record.winner)
+      record.errors[:winner] << 'Invalid winner, must be one of the players'
+    end
+  end
+end
+
 class Game < ActiveRecord::Base
   belongs_to :player_left,  :class_name => "User"
   belongs_to :player_right, :class_name => "User"
@@ -6,4 +14,5 @@ class Game < ActiveRecord::Base
   validates :player_left,  :presence => true
   validates :player_right, :presence => true
   validates :winner,       :presence => true
+  validates_with WinnerValidator
 end
