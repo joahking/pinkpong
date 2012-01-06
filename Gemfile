@@ -22,6 +22,7 @@ end
 group :test do
   gem 'shoulda'
   gem 'shoulda-matchers'
+  gem 'machinist', '>= 2.0.0.beta2'
 end
 
 # To use ActiveModel has_secure_password
