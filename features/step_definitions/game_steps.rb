@@ -12,6 +12,17 @@ When /^I create a game$/ do
   click_button "Create Game"
 end
 
+When /^I create a game using emails$/ do
+  visit root_path
+  click_link "New Game"
+
+  fill_in "player_left_email",  :with => "raimon@pinkpong.com"
+  fill_in "player_right_email", :with => "aurelian@pinkpong.com"
+  fill_in "winner_email", :with => "aurelian@pinkpong.com"
+
+  click_button "Create Game"
+end
+
 Then /^I should see the game$/ do
   assert has_content?("Game was successfully created")
 end

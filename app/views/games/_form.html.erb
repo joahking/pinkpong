@@ -16,13 +16,28 @@
     <%= f.select :player_left_id, @users.collect { |u| [u.email, u.id] } %>
   </div>
   <div class="field">
+    If the left player is not in the list, enter her/his email
+    <%= text_field_tag :player_left_email %>
+  </div>
+
+  <div class="field">
     <%= f.label :player_right_id %>*<br />
     <%= f.select :player_right_id, @users.collect { |u| [u.email, u.id] } %>
   </div>
   <div class="field">
+    If the right player is not in the list, enter her/his email
+    <%= text_field_tag :player_right_email %>
+  </div>
+
+  <div class="field">
     <%= f.label :winner_id %>*<br />
     <%= f.select :winner_id, @users.collect { |u| [u.email, u.id] } %>
   </div>
+  <div class="field">
+    If the winner is not in the list, enter her/his email
+    <%= text_field_tag :winner_email %>
+  </div>
+
   <div class="field">
     <%= f.label :score %><br />
     <%= f.text_field :score %>

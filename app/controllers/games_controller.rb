@@ -1,5 +1,6 @@
  class GamesController < ApplicationController
    before_filter :load_users, :only => [:new, :create, :edit, :update]
+   before_filter :find_or_create_users_by_emails, :only => [:create, :update]
 
    # GET /games
    # GET /games.json
@@ -87,6 +88,37 @@
 
    def load_users
      @users = User.all
+   end
+
+   def find_or_create_users_by_emails
+     #dry this
+     if params[:game][:player_left_id].blank? && params[:player_left_email]
+       player_left = User.find_by_email params[:player_left_email]
+       player_left ||= User.create!(:email => params[:player_left_email],
+                                    :password => SecureRandom.hex(6))
+       if player_left
+         params[:game][:player_left_id] = player_left.id
+       end
+     end
+
+     if params[:game][:player_right_id].blank? && params[:player_right_email]
+       player_right = User.find_by_email params[:player_right_email]
+       player_right ||= User.create!(:email => params[:player_right_email],
+                                     :password => SecureRandom.hex(6))
+       if player_right
+         params[:game][:player_right_id] = player_right.id
+       end
+     end
+
+     if params[:game][:winner_id].blank? && params[:winner_email]
+       winner = User.find_by_email params[:winner_email]
+       winner ||= User.create!(:email => params[:winner_email],
+                               :password => SecureRandom.hex(6))
+       if winner
+         params[:game][:winner_id] = winner.id
+       end
+     end
+
    end
 
  end
