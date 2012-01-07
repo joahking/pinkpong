@@ -8,7 +8,7 @@ end
 
 class WinnerValidator < ActiveModel::Validator
   def validate(record)
-    if [record.player_left, record.player_right].exclude?(record.winner)
+    if record.players.exclude?(record.winner)
       record.errors[:winner] << 'Invalid winner, must be one of the players'
     end
   end
@@ -26,6 +26,14 @@ class Game < ActiveRecord::Base
   validates_with NonRepeatedPlayersValidator
 
   after_create :email_players
+
+  def loser
+    (players - [winner]).first
+  end
+
+  def players
+    [player_left, player_right]
+  end
 
   protected
 

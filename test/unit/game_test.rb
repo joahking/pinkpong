@@ -29,4 +29,16 @@ class GameTest < ActiveSupport::TestCase
     assert game.errors[:player_right]
   end
 
+  test '#players returns all players' do
+    game = Game.make!
+    assert_equal [game.player_left, game.player_right], game.players
+  end
+
+  test '#loser returns the loser' do
+    winner = User.make!
+    loser = User.make!
+
+    game = Game.make! :player_left => winner, :player_right => loser, :winner => winner
+    assert_equal loser, game.loser
+  end
 end
