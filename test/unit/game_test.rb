@@ -19,4 +19,14 @@ class GameTest < ActiveSupport::TestCase
     assert !game.valid?
     assert game.errors[:winner]
   end
+
+  should 'not allow repeated players' do
+    same_player = User.make!
+
+    game = Game.new :player_left => same_player, :player_right => same_player, :winner => same_player
+
+    assert !game.valid?
+    assert game.errors[:player_right]
+  end
+
 end

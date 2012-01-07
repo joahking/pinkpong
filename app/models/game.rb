@@ -1,3 +1,11 @@
+class NonRepeatedPlayersValidator < ActiveModel::Validator
+  def validate(record)
+    if record.player_left == record.player_right
+      record.errors[:player_right] << 'Repeated player'
+    end
+  end
+end
+
 class WinnerValidator < ActiveModel::Validator
   def validate(record)
     if [record.player_left, record.player_right].exclude?(record.winner)
@@ -15,4 +23,5 @@ class Game < ActiveRecord::Base
   validates :player_right, :presence => true
   validates :winner,       :presence => true
   validates_with WinnerValidator
+  validates_with NonRepeatedPlayersValidator
 end
