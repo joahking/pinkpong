@@ -39,5 +39,6 @@ class Game < ActiveRecord::Base
 
   def email_players
     PlayerMailer.win_email(winner, self).deliver
+    PlayerMailer.lose_email(loser, self).deliver
   end
 end

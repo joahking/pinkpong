@@ -7,4 +7,10 @@ class PlayerMailer < ActionMailer::Base
     mail(:to => user.email, :subject => "You won a pinkpong game")
   end
 
+  def lose_email(user, game)
+    @user = user
+    @game  = game
+    mail(:to => user.email, :subject => "You lost a pinkpong game")
+  end
+
 end
