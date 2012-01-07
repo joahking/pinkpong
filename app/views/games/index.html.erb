@@ -1,10 +1,11 @@
-<h1>Listing games</h1>
+<%= link_to 'New Game', new_game_path %>
+
+<h1>Latest games</h1>
 
 <table>
   <tr>
-    <th>Player left</th>
-    <th>Player right</th>
     <th>Winner</th>
+    <th>Loser</th>
     <th>Score</th>
     <th>Description</th>
     <th></th>
@@ -14,9 +15,8 @@
 
 <% @games.each do |game| %>
   <tr>
-    <td><%= game.player_left_id %></td>
-    <td><%= game.player_right_id %></td>
-    <td><%= game.winner_id %></td>
+    <td><%= game.winner.email %></td>
+    <td><%= game.loser.email %></td>
     <td><%= game.score %></td>
     <td><%= game.description %></td>
     <td><%= link_to 'Show', game %></td>
@@ -27,5 +27,3 @@
 </table>
 
 <br />
-
-<%= link_to 'New Game', new_game_path %>
