@@ -24,6 +24,12 @@ class GamesControllerTest < ActionController::TestCase
     assert_redirected_to game_path(assigns(:game))
   end
 
+  test "create does not blow with invalid emails" do
+    post :create, :game => { }, :player_left_email => "invalid", :player_right_email => "invalid", :winner_email => "invalid"
+
+    assert_response :success
+  end
+
   test "should show game" do
     get :show, :id => @game.to_param
     assert_response :success

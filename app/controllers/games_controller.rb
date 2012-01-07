@@ -94,27 +94,27 @@
      #dry this
      if params[:game][:player_left_id].blank? && params[:player_left_email]
        player_left = User.find_by_email params[:player_left_email]
-       player_left ||= User.create!(:email => params[:player_left_email],
-                                    :password => SecureRandom.hex(6))
-       if player_left
+       player_left ||= User.new(:email => params[:player_left_email],
+                                :password => SecureRandom.hex(6))
+       if player_left.save
          params[:game][:player_left_id] = player_left.id
        end
      end
 
      if params[:game][:player_right_id].blank? && params[:player_right_email]
        player_right = User.find_by_email params[:player_right_email]
-       player_right ||= User.create!(:email => params[:player_right_email],
-                                     :password => SecureRandom.hex(6))
-       if player_right
+       player_right ||= User.new(:email => params[:player_right_email],
+                                 :password => SecureRandom.hex(6))
+       if player_right.save
          params[:game][:player_right_id] = player_right.id
        end
      end
 
      if params[:game][:winner_id].blank? && params[:winner_email]
        winner = User.find_by_email params[:winner_email]
-       winner ||= User.create!(:email => params[:winner_email],
-                               :password => SecureRandom.hex(6))
-       if winner
+       winner ||= User.new(:email => params[:winner_email],
+                           :password => SecureRandom.hex(6))
+       if winner.save
          params[:game][:winner_id] = winner.id
        end
      end
