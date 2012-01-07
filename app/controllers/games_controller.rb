@@ -1,4 +1,6 @@
  class GamesController < ApplicationController
+   before_filter :load_users, :only => [:new, :create, :edit, :update]
+
    # GET /games
    # GET /games.json
    def index
@@ -80,4 +82,11 @@
        format.json { head :ok }
      end
    end
+
+   protected
+
+   def load_users
+     @users = User.all
+   end
+
  end

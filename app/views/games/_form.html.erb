@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :player_left_id %><br />
-    <%= f.text_field :player_left_id %>
+    <%= f.label :player_left_id %>*<br />
+    <%= f.select :player_left_id, @users.collect { |u| [u.email, u.id] } %>
   </div>
   <div class="field">
-    <%= f.label :player_right_id %><br />
-    <%= f.text_field :player_right_id %>
+    <%= f.label :player_right_id %>*<br />
+    <%= f.select :player_right_id, @users.collect { |u| [u.email, u.id] } %>
   </div>
   <div class="field">
-    <%= f.label :winner_id %><br />
-    <%= f.text_field :winner_id %>
+    <%= f.label :winner_id %>*<br />
+    <%= f.select :winner_id, @users.collect { |u| [u.email, u.id] } %>
   </div>
   <div class="field">
     <%= f.label :score %><br />

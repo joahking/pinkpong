@@ -1,10 +1,14 @@
 When /^I create a game$/ do
-  2.times { User.make }
+  User.make! :email => "aurelian@pinkpong.com"
+  User.make! :email => "raimon@pinkpong.com"
+
   visit root_path
   click_link "New Game"
-  fill_in "Player left", :with => User.first.id
-  fill_in "Player right", :with => User.last.id
-  fill_in "Winner", :with => User.last.id
+
+  select "raimon@pinkpong.com", :from => "Player left"
+  select "aurelian@pinkpong.com", :from => "Player right"
+  select "aurelian@pinkpong.com", :from => "Winner"
+
   click_button "Create Game"
 end
 
