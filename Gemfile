@@ -23,6 +23,8 @@ group :test do
   gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'machinist', '>= 2.0.0.beta2'
+  gem 'cucumber-rails', '1.2.1'
+  gem 'database_cleaner'
 end
 
 # To use ActiveModel has_secure_password
