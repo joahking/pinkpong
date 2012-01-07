@@ -5,7 +5,7 @@
    # GET /games
    # GET /games.json
    def index
-     @games = Game.all
+     @games = Game.all(:include => [:player_left, :player_right])
 
      respond_to do |format|
        format.html # index.html.erb
@@ -16,7 +16,7 @@
    # GET /games/1
    # GET /games/1.json
    def show
-     @game = Game.find(params[:id])
+     @game = Game.find(params[:id], :include => [:player_left, :player_right])
 
      respond_to do |format|
        format.html # show.html.erb
