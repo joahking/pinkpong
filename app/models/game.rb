@@ -24,4 +24,12 @@ class Game < ActiveRecord::Base
   validates :winner,       :presence => true
   validates_with WinnerValidator
   validates_with NonRepeatedPlayersValidator
+
+  after_create :email_players
+
+  protected
+
+  def email_players
+    PlayerMailer.win_email(winner, self).deliver
+  end
 end

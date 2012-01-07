@@ -15,3 +15,7 @@ end
 Then /^I should see the game$/ do
   assert has_content?("Game was successfully created")
 end
+
+Then /^the winner should receive a game email$/ do
+  step %{"#{Game.last.winner.email}" should receive an email with subject "You won a pinkpong game"}
+end
