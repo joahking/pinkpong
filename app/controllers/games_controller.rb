@@ -5,7 +5,7 @@
    # GET /games
    # GET /games.json
    def index
-     @games = Game.all(:include => [:winner, :loser])
+     @games = Game.order("created_at DESC").includes(:winner, :loser)
 
      respond_to do |format|
        format.html # index.html.erb
