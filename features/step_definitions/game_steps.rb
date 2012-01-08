@@ -5,9 +5,8 @@ When /^I create a game$/ do
   visit root_path
   click_link "New Game"
 
-  select "raimon@pinkpong.com", :from => "Player left"
-  select "aurelian@pinkpong.com", :from => "Player right"
-  select "aurelian@pinkpong.com", :from => "Winner"
+  select "raimon@pinkpong.com", :from => "Winner"
+  select "aurelian@pinkpong.com", :from => "Loser"
 
   click_button "Create Game"
 end
@@ -16,9 +15,8 @@ When /^I create a game using emails$/ do
   visit root_path
   click_link "New Game"
 
-  fill_in "player_left_email",  :with => "raimon@pinkpong.com"
-  fill_in "player_right_email", :with => "aurelian@pinkpong.com"
-  fill_in "winner_email", :with => "aurelian@pinkpong.com"
+  fill_in "winner_email",  :with => "aurelian@pinkpong.com"
+  fill_in "loser_email", :with => "raimon@pinkpong.com"
 
   click_button "Create Game"
 end

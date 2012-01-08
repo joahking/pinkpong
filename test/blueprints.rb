@@ -1,9 +1,8 @@
 require 'machinist/active_record'
 
 Game.blueprint do
-  player_left  { User.make }
-  player_right { User.make }
-  winner       { object.player_left }
+  winner { User.make }
+  loser  { User.make }
 end
 
 User.blueprint do

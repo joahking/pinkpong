@@ -25,7 +25,7 @@ class GamesControllerTest < ActionController::TestCase
   end
 
   test "create does not blow with invalid emails" do
-    post :create, :game => { }, :player_left_email => "invalid", :player_right_email => "invalid", :winner_email => "invalid"
+    post :create, :game => { }, :loser_email => "invalid", :winner_email => "invalid", :winner_email => "invalid"
 
     assert_response :success
   end

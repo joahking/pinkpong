@@ -5,7 +5,7 @@
    # GET /games
    # GET /games.json
    def index
-     @games = Game.all(:include => [:player_left, :player_right])
+     @games = Game.all(:include => [:winner, :loser])
 
      respond_to do |format|
        format.html # index.html.erb
@@ -16,7 +16,7 @@
    # GET /games/1
    # GET /games/1.json
    def show
-     @game = Game.find(params[:id], :include => [:player_left, :player_right])
+     @game = Game.find(params[:id], :include => [:winner, :loser])
 
      respond_to do |format|
        format.html # show.html.erb
@@ -91,31 +91,21 @@
    end
 
    def find_or_create_users_by_emails
-     #dry this
-     if params[:game][:player_left_id].blank? && params[:player_left_email]
-       player_left = User.find_by_email params[:player_left_email]
-       player_left ||= User.new(:email => params[:player_left_email],
-                                :password => SecureRandom.hex(6))
-       if player_left.save
-         params[:game][:player_left_id] = player_left.id
-       end
-     end
-
-     if params[:game][:player_right_id].blank? && params[:player_right_email]
-       player_right = User.find_by_email params[:player_right_email]
-       player_right ||= User.new(:email => params[:player_right_email],
-                                 :password => SecureRandom.hex(6))
-       if player_right.save
-         params[:game][:player_right_id] = player_right.id
-       end
-     end
-
      if params[:game][:winner_id].blank? && params[:winner_email]
        winner = User.find_by_email params[:winner_email]
        winner ||= User.new(:email => params[:winner_email],
                            :password => SecureRandom.hex(6))
        if winner.save
          params[:game][:winner_id] = winner.id
+       end
+     end
+
+     if params[:game][:loser_id].blank? && params[:loser_email]
+       loser = User.find_by_email params[:loser_email]
+       loser ||= User.new(:email => params[:loser_email],
+                                :password => SecureRandom.hex(6))
+       if loser.save
+         params[:game][:loser_id] = loser.id
        end
      end
 
