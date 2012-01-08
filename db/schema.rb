@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120108171311) do
+ActiveRecord::Schema.define(:version => 20120108174956) do
 
   create_table "games", :force => true do |t|
     t.integer  "winner_id"
@@ -19,9 +19,13 @@ ActiveRecord::Schema.define(:version => 20120108171311) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "loser_id"
+    t.integer  "winner_double_id"
+    t.integer  "loser_double_id"
   end
 
+  add_index "games", ["loser_double_id"], :name => "index_games_on_loser_double_id"
   add_index "games", ["loser_id"], :name => "index_games_on_loser_id"
+  add_index "games", ["winner_double_id"], :name => "index_games_on_winner_double_id"
   add_index "games", ["winner_id"], :name => "index_games_on_winner_id"
 
   create_table "users", :force => true do |t|

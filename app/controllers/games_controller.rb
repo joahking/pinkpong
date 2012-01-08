@@ -100,12 +100,30 @@
        end
      end
 
+     if params[:game][:winner_double_id].blank? && params[:winner_double_email]
+       winner_double = User.find_by_email params[:winner_double_email]
+       winner_double ||= User.new(:email => params[:winner_double_email],
+                           :password => SecureRandom.hex(6))
+       if winner_double.save
+         params[:game][:winner_double_id] = winner_double.id
+       end
+     end
+
      if params[:game][:loser_id].blank? && params[:loser_email]
        loser = User.find_by_email params[:loser_email]
        loser ||= User.new(:email => params[:loser_email],
                                 :password => SecureRandom.hex(6))
        if loser.save
          params[:game][:loser_id] = loser.id
+       end
+     end
+
+     if params[:game][:loser_double_id].blank? && params[:loser_double_email]
+       loser_double = User.find_by_email params[:loser_double_email]
+       loser_double ||= User.new(:email => params[:loser_double_email],
+                                :password => SecureRandom.hex(6))
+       if loser_double.save
+         params[:game][:loser_double_id] = loser_double.id
        end
      end
 

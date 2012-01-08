@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :winner_id %>*<br />
-    <%= f.select :winner_id, @users.collect { |u| [u.email, u.id] } %>
+    <%= f.select :winner_id, @users.collect { |u| [u.email, u.id] }, {:include_blank => true} %>
   </div>
   <div class="field">
     If the winner is not in the list, enter her/his email
@@ -21,12 +21,32 @@
   </div>
 
   <div class="field">
+    If it was a double, select other winner:<br />
+    <%= f.label :winner_double_id %><br />
+    <%= f.select :winner_double_id, @users.collect { |u| [u.email, u.id] }, {:include_blank => true} %>
+  </div>
+  <div class="field">
+    If the winner_double is not in the list, enter her/his email
+    <%= text_field_tag :winner_double_email %>
+  </div>
+
+  <div class="field">
     <%= f.label :loser_id %>*<br />
-    <%= f.select :loser_id, @users.collect { |u| [u.email, u.id] } %>
+    <%= f.select :loser_id, @users.collect { |u| [u.email, u.id] }, {:include_blank => true} %>
   </div>
   <div class="field">
     If the loser is not in the list, enter her/his email
     <%= text_field_tag :loser_email %>
+  </div>
+
+  <div class="field">
+    If it was a double, select other loser:<br />
+    <%= f.label :loser_double_id %><br />
+    <%= f.select :loser_double_id, @users.collect { |u| [u.email, u.id] }, {:include_blank => true} %>
+  </div>
+  <div class="field">
+    If the loser_double is not in the list, enter her/his email
+    <%= text_field_tag :loser_double_email %>
   </div>
 
   <div class="field">

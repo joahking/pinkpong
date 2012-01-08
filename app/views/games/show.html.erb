@@ -5,10 +5,24 @@
   <%= @game.winner.email %>
 </p>
 
+<% if @game.double? %>
+<p>
+  <b>Winner:</b>
+  <%= @game.winner_double.email %>
+</p>
+<% end %>
+
 <p>
   <b>Loser:</b>
   <%= @game.loser.email %>
 </p>
+
+<% if @game.double? %>
+<p>
+  <b>Loser:</b>
+  <%= @game.loser_double.email %>
+</p>
+<% end %>
 
 <% if @game.score.present? %>
 <p>
