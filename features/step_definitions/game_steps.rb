@@ -1,3 +1,7 @@
+When /^I visit the new game page$/ do
+  visit new_game_path
+end
+
 When /^I create a game$/ do
   User.make! :email => "aurelian@pinkpong.com"
   User.make! :email => "raimon@pinkpong.com"

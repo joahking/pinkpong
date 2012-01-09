@@ -1,4 +1,5 @@
  class GamesController < ApplicationController
+   before_filter :authenticate_user!, :only => [:new, :create, :edit, :update]
    before_filter :load_users, :only => [:new, :create, :edit, :update]
    before_filter :find_or_create_users_by_emails, :only => [:create, :update]
 
