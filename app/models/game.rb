@@ -1,7 +1,23 @@
 class NonRepeatedPlayersValidator < ActiveModel::Validator
   def validate(record)
-    if record.winner == record.loser
-      record.errors[:loser] << 'Repeated player'
+    users_id = [record.winner_id, record.loser_id,
+                record.winner_double_id, record.loser_double_id]
+    users_id.compact! # only users, not nils
+
+    if users_id.uniq != users_id
+      record.errors[:base] << 'Repeated player'
+    end
+  end
+end
+
+class PlayersParityValidator < ActiveModel::Validator
+  def validate(record)
+    users_id = [record.winner_id, record.loser_id,
+                record.winner_double_id, record.loser_double_id]
+    users_id.compact! # only users, not nils
+
+    if users_id.length != 2 && users_id.length != 4
+      record.errors[:base] << 'Wrong number of players'
     end
   end
 end
@@ -17,6 +33,7 @@ class Game < ActiveRecord::Base
   validates :loser, :presence => true
 
   validates_with NonRepeatedPlayersValidator
+  validates_with PlayersParityValidator
 
   after_create :email_players
 
