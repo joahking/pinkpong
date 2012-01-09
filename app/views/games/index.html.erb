@@ -6,8 +6,6 @@
   <tr>
     <th>Winner</th>
     <th>Loser</th>
-    <th>Score</th>
-    <th>Description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,8 +15,6 @@
   <tr>
     <td><%= game.winner.email %></td>
     <td><%= game.loser.email %></td>
-    <td><%= game.score %></td>
-    <td><%= game.description %></td>
     <td><%= link_to 'Show', game %></td>
     <td><%= link_to 'Edit', edit_game_path(game) %></td>
     <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
