@@ -48,6 +48,17 @@ Pinkpong::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
+  # ActionMailer::Base
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => '3scale.net',
+    :user_name => 'pinkpong@3scale.es',
+    :password => 'p1nkp0ng36e',
+    :authentication => 'plain',
+    :enable_starttls_auto => true
+  }
+
   # Enable threaded mode
   # config.threadsafe!
 

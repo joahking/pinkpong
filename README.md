@@ -7,6 +7,5 @@ Rails application to record the results of the ping pong (pink pong) at "3scale 
 * game views doubles tweaks
 * game double emails text tweaks
 * CSS love
-* gmail integration
 * heroku deploy
 * no email outside 3scale (user validation)
