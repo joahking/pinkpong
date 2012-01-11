@@ -8,7 +8,15 @@
 </head>
 <body>
 <h1>3scale Pink Pong league scores</h1>
+
+<div style="float:right;">
+  <% if user_signed_in? -%>
+    <%= link_to 'logout', destroy_user_session_path %>
+  <% end -%>
+</div>
+
 <%= yield %>
 
+<a href="https://github.com/joahking/pinkpong">fork me on github</a>
 </body>
 </html>
