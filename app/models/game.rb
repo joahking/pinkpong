@@ -45,6 +45,14 @@ class Game < ActiveRecord::Base
     !single?
   end
 
+  def winners
+    [winner, winner_double]
+  end
+
+  def losers
+    [loser, loser_double]
+  end
+
   protected
 
   def email_players

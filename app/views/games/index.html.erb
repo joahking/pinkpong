@@ -13,8 +13,8 @@
 
 <% @games.each do |game| %>
   <tr>
-    <td><%= game.winner.email %></td>
-    <td><%= game.loser.email %></td>
+    <td><%= game.winner.email %> <% if game.double? %> and <%= game.winner_double.email %><% end%></td>
+    <td><%= game.loser.email %> <% if game.double? %> and <%= game.loser_double.email %><% end%></td>
     <td><%= link_to 'Show', game %></td>
     <td><%= link_to 'Edit', edit_game_path(game) %></td>
     <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
