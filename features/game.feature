@@ -1,5 +1,9 @@
 Feature: Game feature
 
+Scenario: Games index is the homepage
+  When I visit the homepage
+  Then I should see the games
+
 Scenario: Create game requires login
   Given I am not authenticated
   When I visit the new game page

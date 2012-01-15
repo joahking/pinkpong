@@ -1,3 +1,7 @@
+When /^I visit the homepage$/ do
+  visit root_path
+end
+
 When /^I visit the new game page$/ do
   visit new_game_path
 end
@@ -75,4 +79,8 @@ Then /^the players should receive a double email$/ do
   step %{"#{Game.last.winner_double.email}" should receive an email with subject "You won a pinkpong double"}
   step %{"#{Game.last.loser.email}" should receive an email with subject "You lost a pinkpong double"}
   step %{"#{Game.last.loser_double.email}" should receive an email with subject "You lost a pinkpong double"}
+end
+
+Then /^I should see the games$/ do
+  assert has_content?("games")
 end
