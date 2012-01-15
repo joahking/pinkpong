@@ -12,7 +12,7 @@
   </tr>
 
 <% @games.each do |game| %>
-  <tr <%= cycle("style='background-color:#F9F9F9;';", "style='background-color:white;';") -%>'>
+  <tr <%= cycle("style='background-color:#DCE9F2;';", "style='background-color:white;';") -%>'>
     <td><%= game.winner.email %> <% if game.double? %> and <%= game.winner_double.email %><% end%></td>
     <td><%= game.loser.email %> <% if game.double? %> and <%= game.loser_double.email %><% end%></td>
     <td><%= link_to 'Show', game %></td>
