@@ -52,11 +52,4 @@ class GamesControllerTest < ActionController::TestCase
     assert_redirected_to game_path(assigns(:game))
   end
 
-  test "should destroy game" do
-    sign_in @user
-    assert_difference('Game.count', -1) do
-      delete :destroy, :id => @game.to_param
-    end
-    assert_redirected_to games_path
-  end
 end

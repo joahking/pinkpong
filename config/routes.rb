@@ -1,5 +1,5 @@
 Pinkpong::Application.routes.draw do
-  resources :games
+  resources :games, :except => :destroy
 
   devise_for :users
 

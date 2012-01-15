@@ -73,18 +73,6 @@
      end
    end
 
-   # DELETE /games/1
-   # DELETE /games/1.json
-   def destroy
-     @game = Game.find(params[:id])
-     @game.destroy
-
-     respond_to do |format|
-       format.html { redirect_to games_url }
-       format.json { head :ok }
-     end
-   end
-
    protected
 
    def load_users

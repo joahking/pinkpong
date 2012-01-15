@@ -17,7 +17,6 @@
     <td><%= game.loser.email %> <% if game.double? %> and <%= game.loser_double.email %><% end%></td>
     <td><%= link_to 'Show', game %></td>
     <td><%= link_to 'Edit', edit_game_path(game) %></td>
-    <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
