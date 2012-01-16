@@ -53,7 +53,7 @@ Pinkpong::Application.configure do
     :address => "smtp.gmail.com",
     :port => 587,
     :domain => '3scale.net',
-    :user_name => 'pinkpong@3scale.es',
+    :user_name => 'pinkpong@3scale.net',
     :password => 'p1nkp0ng36e',
     :authentication => 'plain',
     :enable_starttls_auto => true

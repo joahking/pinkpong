@@ -1,5 +1,5 @@
 class PlayerMailer < ActionMailer::Base
-  default :from => "app@pinkpong.com"
+  default :from => "pinkpong@3scale.net"
 
   def win_email(user, game)
     @user = user

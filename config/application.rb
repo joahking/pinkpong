@@ -49,6 +49,6 @@ module Pinkpong
       g.fixture_replacement :machinist
     end
 
-    config.action_mailer.default_url_options = { :host => "pinkpong.com" }
+    config.action_mailer.default_url_options = { :host => "pinkpong.pent.es" }
   end
 end
